@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+				## オトナのiOS開発入門
+				### @未来会議室
+				2017/06/21  
+				Takahiro ISHIZUKA
+				</section>
+				<section data-markdown>
+				## 自己紹介
+				- 石塚といいます。
+				- 勘定奉行なところで以前働いていました。
+				- C#とかVBとかサバクラ系
+				- Ruby、PHP
+				- iOS(Swift)
+				- さいきんXamarinを少々。。。
+				</section>
+				<section data-markdown>
+				## 本日の流れ
+				- 環境の確認
+				- ライセンス体系と配布方法
+				- プロジェクトの作成とHello World
+				- シミュレータの実行
+				- デバッグ方法
+				- Unicorn ChatでHey Siriしてみる
+				</section>
+				<section data-markdown>
+				## 環境の確認
+				- mac + Xcode
+				- Xcodeが未インストールの方は...間に合うかな
+				</section>
+				<section data-markdown>
+				## 使用する言語
+				- Objective-CとSwiftが利用できます
+				- 今回はSwiftを利用します
+				- Objective-C よくわかんないし
+				</section>
+				<section data-markdown>
+				## 開発ライセンスについて
+				大きく分けて２つのライセンスがあります
+				- Apple Developer Program
+				- Apple Developer Enterprise Program
+				</section>
+				<section data-markdown>
+				## Apple Developer Program
+				- 個人登録と法人登録がある（どちらも内容は一緒）
+				- 法人の場合、契約時にD-U-N-S Numberが必要
+				- 年間11,800円
+				- App Storeでの配布とAd Hocでの配布の２通り
+				- 配布方法の違いはのちほど
+				</section>
+				<section data-markdown>
+				## Apple Developer Enterprise Program
+				- 法人登録のみ
+				- 契約時にD-U-N-S Numberが必要
+				- 年間37,800円
+				- in-houseでの配布とAd Hocでの配布の２通り
+				</section>
+				<section data-markdown>
+				## アプリの配布方法
+				iOSアプリの配布方法は３つあります
+				- App Store
+				- Ad Hoc
+				- in-house
+				</section>
+				<section data-markdown>
+				## App Store
+				- ストアに公開する方法
+				- Apple Developer Programで利用可能
+				- 公開するにはAppleの審査を通る必要がある
+				</section>
+				<section data-markdown>
+				## Ad Hoc
+				- リリースビルドをTestFlightやDeploygateなどを通じて配布する方法
+				- どちらの開発ライセンスでも可能
+				- 事前にDeveloper Consoleでデバイスを登録する必要がある
+				- 100台まで
+				- Appleの審査は無し
+				</section>
+				<section data-markdown>
+				## in-house
+				- 企業内で利用するツールとして自前のサーバーから配布する方法
+				- Apple Developer Enterprise Programで利用可能
+				- 企業内の利用に限られる
+				- 配布するデバイス数は無限
+				- 配布用のサーバーを用意する必要がある
+				- Appleの審査は無し
+				</section>
+				<section data-markdown>
+				## プロジェクトの作成
+				- Xcodeを起動し「Create a new Xcode project」
+				- 「Single View Application」
+				</section>
+				<section data-markdown>
+				![](img/1.png)
+				</section>
+				<section data-markdown>
+				## 画面にLabelを置いてみましょう
+				Labelをドラッグして配置し、テキストをHello Worldにしてください。
+				</section>
+				<section data-markdown>
+				![](img/2.png)
+				</section>
+				<section data-markdown>
+				## シミュレーターで実行してみてください
+				</section>
+				<section data-markdown>
+				![](img/3.png)
+				</section>
+				<section data-markdown>
+				## ボタンの配置
+				Buttonをドラッグして配置してください。
+				</section>
+				<section data-markdown>
+				![](img/4.png)
+				</section>
+				<section data-markdown>
+				## 分割表示にして、Labelを変数に紐付けます
+				</section>
+				<section data-markdown>
+				![](img/5.png)
+				</section>
+				<section data-markdown>
+				## ButtonのTouch Up Insideイベントを紐付けます
+				</section>
+				<section data-markdown>
+				![](img/6.png)
+				</section>
+				<section data-markdown>
+				```
+				@IBAction func btnTouch(_ sender: Any) {
+					self.labelTitle.text = "Hello Xcode"
+				}
+				```
+				</section>
+				<section data-markdown>
+				### シミュレータで実行して、ボタンにタッチしてみましょう。
+				</section>
+				<section data-markdown>
+				### 画面遷移してみます
+				### ViewControllerを配置してください。
+				</section>
+				<section data-markdown>
+				![](img/7.png)
+				</section>
+				<section data-markdown>
+				### ボタンを押したら遷移するようにします
+				</section>
+				<section data-markdown>
+				![](img/8.png)
+				</section>
+				<section data-markdown>
+				### シミュレータで実行して、ボタンにタッチしてみましょう。
+				超単純な画面遷移のできあがりです。
+				</section>
+				<section data-markdown>
+				### NavigationControllerを配置して戻れるようにしてみてください。
+				</section>
+				<section data-markdown>
+				![](img/9.png)
+				</section>
+				<section data-markdown>
+				- Storyboardを利用すると簡単にアプリの画面遷移が作成できます。
+				- 基本的にデザイナ画面でコントロールを置く→ソースに紐付けて使う、の繰り返しです
+				</section>
+				<section data-markdown>
+				- 標準のUIを用いたアプリなら作りやすいですが、ちょっと凝ったものを作ろうとすると大変になります
+				- もちろんViewを複数のファイルに分けて作成することも可能です
+				</section>
+				<section data-markdown>
+				## Siri連携をやってみましょう！
+				UnicornChatというAppleのサンプルソースを動かしてみます。  
+				https://developer.apple.com/library/content/samplecode/UnicornChat/Introduction/Intro.html  
+				右上の「Download Sample Code」からソースをダウンロードしてください。
+				</section>
+				<section data-markdown>
+				![](img/10.png)
+				</section>
+				<section data-markdown>
+				![](img/11.png)
+				</section>
+				<section data-markdown>
+				## シミュレータで実行してみましょう
+				「ユニコーンチャットでメッセージを送信」と話しかけてみてください。
+				</section>
+				<section data-markdown>
+				![](img/12.png)
+				</section>
+				<section data-markdown>
+				ちなみにアプリ名を変えることも可能です。
+				</section>
+				<section data-markdown>
+				![](img/13.png)
+				</section>
+				<section data-markdown>
+				## 中身のはなし
+				</section>
+				<section data-markdown>
+				## インテント拡張
+				```
+				class UCIntentsHandler: INExtension {
+
+    override func handler(for intent: INIntent) -> Any? {
+        if intent is INSendMessageIntent {
+            return UCSendMessageIntentHandler()
+        }
+
+        return nil
+    }
+}
+```
+				</section>
+				<section data-markdown>
+				- INExtensionを継承したインテント拡張が作ってあります
+				- SiriとのやりとりをさばくハンドラとしてUCSendMessageIntentHandlerを返しています
+				</section>
+				<section data-markdown>
+				## イベントハンドリング
+				Siriとの通信では、３つのフェーズがあります
+				- Resolve (Intentのパラメータの確認を行う)
+				- Confirm (Intentに対するレスポンスを生成してタスク実行の最終確認を行う)
+				- Handle (タスクの実行して結果を返す)
+				</section>
+				<section data-markdown>
+				## resolveRecipients
+				- Resolveフェーズで宛先を確認する際に呼ばれます。  
+				- サンプルでは変数recipientsに宛先リストを受け取り、そこからマッチするものを探しています。
+				</section>
+				<section data-markdown>
+				## resolveContent
+				- Resolveフェーズで本文を確認する際に呼ばれます。
+				- サンプルでは何か文字が入っていればSuccessとしています。
+				</section>
+				<section data-markdown>
+				## Confirm
+				- Confirmフェーズで呼び出されます。  
+				- Resolveフェーズのメソッドで、INStringResolutionResult.successが返された時点で呼ばれます。  
+				- アプリとしてインテントに含まれる各データが適正であるかを確認してSiriに伝えます。
+				</section>
+				<section data-markdown>
+				## Handle
+				- 確認画面で「送信」ボタンを押すと処理中の画面となり、この時handleが呼ばれます。
+				- 実際の送信処理などはここで書きます。
+				- UnicornChatサンプルではそれっぽく書かれていますが、実際はなにも処理されていませんｗ
+				</section>
+				<section data-markdown>
+				## 大まかな流れの解説でした。
+				## いろいろいじって遊んでみてください。
+				</section>
+				<section data-markdown>
+				## まとめ
+				SiriKitの公式HP  
+				https://developer.apple.com/sirikit/
+				</section>
+				<section data-markdown>
+				これによると対応インテントは９種類みたいですね。
+				</section>
+				<section data-markdown>
+				## おわり
+				ご質問などあればぜひ！
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				slideNumber: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>
